@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig> 
+    
+	<settings enhancementEnabled="true" maxTransactions="20" maxRequests="32" maxSessions="10"/>
+    
+   
+	 <sqlMap resource="sqlmaps/AccountInfoSQL.xml"/>
+	 
+	 <sqlMap resource="sqlmaps/AccountSQL.xml"/>
+	 
+	  <sqlMap resource="sqlmaps/CategorySQL.xml"/>
+	 
+	 <sqlMap resource="sqlmaps/UserCheckInfoSQL.xml"/>
+
+</sqlMapConfig>

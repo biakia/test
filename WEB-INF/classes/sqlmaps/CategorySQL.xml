@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"   "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CategorySQL">
+	<typeAlias alias="categoryinfo" type="com.manage.ssi.model.Category" />
+	<resultMap id="categoryinfoResult" class="categoryinfo">
+	    <result property="category_id" column="category_id" />
+		<result property="category_item" column="category_item" />		
+	</resultMap>
+	
+	<select id="getCategory" resultClass="java.lang.String" parameterClass="java.util.Map">
+    <![CDATA[ 
+         select category_item from table_category where category_id=#id#
+     ]]>
+	</select>
+	
+	<select id="getAll" resultMap="categoryinfoResult">
+    <![CDATA[ 
+         select * from table_category
+     ]]>
+	</select>
+
+</sqlMap>

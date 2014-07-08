@@ -1,0 +1,121 @@
+#qu_shi {
+	width: 774px;
+	border: thin solid #000000;
+}
+#qu_shi #filter_bar {
+	width: 774px;
+	border: thin solid #000000;
+	background-attachment: scroll;
+	background-image: url(../res/image/fb_bg.gif);
+	background-repeat: repeat;
+	background-position: 0px -40px;
+}
+#qu_shi #trend {
+	width: 774px;
+	border: thin solid #000000;
+}
+#qu_shi #trend #rTit {
+	width: 774px;
+	border: thin solid #FFFFFF;
+	text-align: center;
+	margin-top: 10px;
+	font-size: 20px;
+	line-height: 40px;
+	font-weight: normal;
+}
+#qu_shi #trend #charBox {
+	width: 774px;
+	box-shadow:-2px 0px 2px #7c8378,0px -2px 2px #7c8378,0px 2px 2px #7c8378,2px 0px 2px #7c8378;
+}
+#qu_shi #trend #tile {
+	background-attachment: scroll;
+	background-image: url(../res/image/trend.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 774px;
+	margin-bottom: 20px;
+}
+
+tbody {
+display: table-row-group;
+vertical-align: middle;
+border-color: inherit;
+}
+
+table {
+border-collapse: separate;
+border-spacing: 2px;
+border-color: gray;
+box-shadow:-2px 0px 2px #7c8378,0px -2px 2px #7c8378,0px 2px 2px #7c8378,2px 0px 2px #7c8378;
+}
+
+.tableList th {
+background: url(../res/image/fcy_bg.gif) repeat-x 0 -29px;
+height: 29px;
+line-height: 29px;
+text-align: center;
+color: #375756;
+vertical-align: middle;
+border-left: 1px solid #D1DBDA;
+border-right: 1px solid #B1BBBA;
+}
+
+.tableList th.end span {
+display: block;
+height: 29px;
+line-height: 29px;
+background: url(../res/image/fcy_bg.gif) no-repeat right -58px;
+}
+
+.tableList td {
+color: #3A3C3A;
+cursor: default;
+height: 26px;
+text-align: center;
+background-color: #E4EAEA;
+border-right: 1px solid #DAE0E0;
+border-bottom: 1px solid #DAE0DE;
+}
+
+.rowH3 td {
+background-color: #545554!important;
+font-size: 14px;
+color: white !important;
+font-weight: bold;
+border-top: 1px solid white;
+height: 28px;
+border-bottom: none;
+border-right: none !important;
+}
+
+.rowH2 td {
+background-color: #B6C7C6!important;
+color: black;
+font-weight: bold;
+border-bottom: none;
+border-right: none !important;
+}
+
+.rowH1 .td1 {
+text-align: right;
+padding-right: 20px;
+}
+
+#tb1 .td2 {
+color: #B91D0C;
+background-color: #E6EFEE;
+}
+
+#tb1 .td3 {
+color: #005915;
+}
+
+#tb1 .td4 {
+background-color: #E6EFEE;
+}
+
+
+#tb1 .td2, #tb1 .td3, #tb1 .td4 {
+text-align: right;
+padding-right: 30px;
+}

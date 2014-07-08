@@ -1,0 +1,6 @@
+global.format.nav={0,number,##0.0000}
+global.format.money={0,number,##0.00}
+global.format.percent ={0,number,##0.00}% 
+global.format.date_ymd={0,date,yyyy-MM-dd}
+global.format.percent1 ={0,number,##0}% 
+global.format.nodot ={0,number,##0}

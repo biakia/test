@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"   "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserCheckInfoSQL">
+	<typeAlias alias="usercheckinfo" type="com.manage.ssi.model.UserCheckInfo" />
+	<resultMap id="usercheckinfoResult" class="usercheckinfo">
+		<result property="users_id" column="users_id" />
+		<result property="users_name" column="users_name" />
+		<result property="users_password" column="users_password" />
+		<result property="users_mail" column="users_mail" />
+		<result property="imagename" column="imagename" />
+	</resultMap>
+	
+    <select id="login" resultMap="usercheckinfoResult" parameterClass="java.util.Map" >
+    <![CDATA[ 
+         select * from table_users where (users_name=#users_name# AND users_password=#users_password#)
+        
+     ]]>
+     
+     
+	</select>
+	 <select id="getUserCheckInfo" resultMap="usercheckinfoResult" parameterClass="java.util.Map" >
+    <![CDATA[ 
+         select * from table_users where users_name=#users_name#
+        
+     ]]>
+	</select>
+	
+	 
+	   <insert id="saveUserCheckInfo" parameterClass="usercheckinfo">
+	<![CDATA[
+	insert into table_users (users_name,users_password,users_mail)
+	values(#users_name#,#users_password#,#users_mail#)
+	]]>
+	 </insert>
+	
+	
+	<update id="updateUserCheckInfo" parameterClass="usercheckinfo">
+		<![CDATA[
+			update table_users set users_name=#users_name#, users_password=#users_password#,users_mail=#users_mail#
+			  where users_name=#users_name# 
+			]]>
+	</update>
+	
+	<update id="uploadPhoto" parameterClass="java.util.Map">
+		<![CDATA[
+			update table_users set imagename=#imagename#
+			  where users_name=#users_name# 
+			]]>
+	</update>
+	
+</sqlMap>

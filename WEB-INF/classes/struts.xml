@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE struts PUBLIC    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    "http://struts.apache.org/dtds/struts-2.0.dtd"><struts>    
+<!-- 设置struts2默认编码 -->	
+<constant name="struts.il8n.encoding" value="UTF-8" />	
+<!-- 设置上传的最大 -->	
+<constant name="struts.multipart.maxSize" value="102400000000" />	
+<!-- 文件上传 -->	
+<constant name="struts.custom.i18n.resources" value="ApplicationResources" />	
+<!-- 利用struts.multipart.saveDirg属性来改变临时文件存放的目录 -->	
+<constant name="struts.multipart.saveDirg" value="E:\\temp" />	
+
+
+<package name="default" extends="struts-default">				
+<!-- 自定义下载时用拦截器 -->		
+<interceptors>			
+<interceptor name="download"class="com.web.struts.interceptor.FileDownloadInterceptor" />		
+</interceptors>	
+	
+<action name="uploadface.*" class="com.manage.ssi.action.FileUploadAction" method="upload">			
+<interceptor-ref name="defaultStack">				
+<!-- 设置上传文件的大小及类型 -->				
+<param name="fileUpload.maximumSize">10240000</param>				
+<param name="fileUpload.allowedTypes">				
+image/bmp,image/jpg,image/x-png,image/pjpeg,				
+image/gif,image/jpeg,application/msword,				
+application/excel,application/vnd.ms-excel,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.wordprocessingml.document,				
+application/zip,application/x-zip-compressed,application/rar,application/xml</param>			
+</interceptor-ref>			
+<result name="jsp" type="dispatcher">/jsp/${target}.jsp</result>		
+</action>				
+
+
+<!-- 文件下载 1 -->		
+<action name="download" class="com.web.struts.action.FileDownloadAction" method="getInputStream">			
+<!-- 指定下载文件的路径，该路径相对于web应用程序所在的目录 -->			
+<param name="inputPath1">/WEB-INF/UploadFiles</param>			
+<result name="success" type="stream">				
+<!-- 指定下载文件内容类型 application/zip -->				
+<param name="contentType">application/octet-stream;charset=ISO-8859-1</param>				
+<!-- inputName默认值是InputStream，如果action中用于读取下载文件内容的属性名是inputStream，那麽可以省略这个参数 -->				<param name="inputName">inputStream</param>				
+<param name="contentDisposition">filename="${filename}"</param>				
+<param name="bufferSize">10240000</param>			
+</result>		
+</action>	
+
+</package>	
+
+<include file="/struts/struts-action.xml" />
+</struts>

@@ -1,0 +1,175 @@
+div.maincontainer
+{   
+	width:1920px;
+	height:760px;
+	padding:0;
+	z-index:0;
+	
+	line-height:100%;
+	position:fixed;
+	background-image:url(../res/image/bg14.jpg);
+	
+}
+div.tablogin{width:200px;
+height:60px;
+ float:left;
+	background-image:url(../res/image/logintab.png);
+}
+div.tabreg{width:200px;
+
+height:60px;
+float:right;
+	background-image:url(../res/image/tabreg.png);
+}
+div.tablogin:hover{background-image:url(../res/image/tabloginnew.png);}
+div.tabreg:hover{background-image:url(../res/image/tabregnew.png);}
+
+div.content
+{  padding:1px;
+	width:400px;
+	height:473px;
+	margin-top:120px;
+	margin-left:820px;
+
+	background-image:url(../res/image/loginForm7.png);
+	z-index:2;
+}
+div.register
+{  padding:1px;
+	width:400px;
+	height:473px;
+	margin-top:120px;
+	margin-left:820px;
+	z-index:1;
+	display:none;
+	background-image:url(../res/image/loginForm7.png);
+}
+div.choose{
+	        padding:1px;
+	       
+	width:410px;
+	height:60px;
+	margin-top:60px;
+	margin-left:800px;
+	float:left;
+	
+}
+div.logo
+{    float:left;
+	width:200px;
+	height:200px;
+	margin-top:0px;
+	margin-left:150px;
+	background-image:url(../res/image/logo1.png);
+}
+div.logoword
+{   
+	width:200px;
+	height:66px;
+	margin-top:50px;
+   margin-left:120px;
+	background-image:url(../res/image/logoword.png);
+}
+div.username
+{  	width:150px;
+	height:68px;
+	margin-top:35px;
+      
+	background-image:url(../res/image/username.png);
+}
+div.psw
+{  	width:150px;
+	height:68px;
+	margin-top:0px;
+     margin-left:26px;  
+	background-image:url(../res/image/psw.png);
+}
+div.pswconfirm
+{  	width:150px;
+	height:68px;
+	margin-top:15px;
+     margin-left:0px;  
+	background-image:url(../res/image/pswconfirm.png);
+}
+
+div.email
+{  	width:150px;
+	height:68px;
+	margin-top:0px;
+     margin-left:29px;  
+     padding:1px;
+	background-image:url(../res/image/email.png);
+}
+
+div.button
+{  	width:220px;
+	height:42px;
+	margin-top:0px;
+      
+	background-image:url(../res/image/button.png);
+}
+div.footer hr
+{
+	height:2px;
+	border:none;
+	border-top:2px solid #603e4b
+}
+
+div.footer p
+{
+	font-family:"微软雅黑";
+	font-size:16pt;
+	font-color: #111111;
+}
+font{
+	font-family:"微软雅黑";
+	font-size:20pt;
+	margin-top:30px;
+	margin-left:130px;
+}
+div.error{
+	width:400px;
+	height:40px;
+	
+	background-image:url(../res/image/error.png);
+	display:none;
+	margin-left:800px;
+	align:center;
+	
+}
+div.warning1{
+	width:120px;
+	height:40px;
+	
+	background-image:url(../res/image/err.png);
+	display:none;
+	margin-left:400px;
+	align:center;
+	
+}
+div.warning2{
+	width:120px;
+	height:40px;
+	
+	background-image:url(../res/image/err2.png);
+	display:none;
+	margin-left:400px;
+	align:center;
+	
+}
+div.warning3{
+	width:120px;
+	height:40px;
+	
+	background-image:url(../res/image/err3.png);
+	display:none;
+	margin-left:377px;
+	align:center;
+	
+}
+
+
+input.text{-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;border: solid 1px #444;font-size: 14px;width: 90%;padding: 7px 8px 7px 30px;-moz-box-shadow: 0px 1px 0px #777;-webkit-box-shadow: 0px 1px 0px #777;background: #ddd url('img/inputSprite.png') no-repeat 4px 5px;background: url('/jscss/demoimg/201310/inputSprite.png') no-repeat 4px 5px, -moz-linear-gradient( center bottom, rgb(225,225,225) 0%, rgb(215,215,215) 54%, rgb(173,173,173) 100% );background: url('/jscss/demoimg/201310/inputSprite.png') no-repeat 4px 5px, -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(225,225,225)), color-stop(0.54, rgb(215,215,215)), color-stop(1, rgb(173,173,173)) );color: #333;text-shadow: 0px 1px 0px #Fff;}
+
+
+

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"   "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="AccountInfoSQL">
+	<typeAlias alias="accountinfo" type="com.manage.ssi.model.AccountModel" />
+	<resultMap id="accountinfoResult" class="accountinfo">
+		<result property="count_id" column="cid" />
+		<result property="count_name" column="count_name" />
+		<result property="count_cash" column="count_cash" />
+		<result property="count_remark" column="count_remark" />
+		<result property="userid" column="userid" />
+		<result property="totalin" column="totalin" />
+		<result property="totalout" column="totalout" />
+		<result property="items" column="items" />
+	</resultMap>
+	
+	<resultMap id="accountinfoResult2" class="accountinfo">
+		<result property="count_id" column="count_id" />
+		<result property="count_name" column="count_name" />
+		<result property="count_cash" column="count_cash" />
+		<result property="count_remark" column="count_remark" />
+		<result property="userid" column="userid" />
+	</resultMap>
+
+
+	<!-- 描述：保存一个账户 作者： 吴极心 -->
+	<insert id="saveAccountModel" parameterClass="accountinfo">
+		<selectKey resultClass="int" keyProperty="count_id">
+			SELECT
+			MAX(count_id)+1 AS count_id FROM table_count
+		</selectKey>
+    <![CDATA[ 
+         insert into table_count (count_name, count_cash, count_remark,userid)
+			values (#count_name#, #count_cash#, #count_remark#,#userid#)
+     ]]>
+	</insert>
+
+	<!-- 描述：删除一个账户，只有账户中的条目为0时才能删除 作者： 吴极心 -->
+	<delete id="deleteAcount" parameterClass="java.util.Map">
+	<![CDATA[
+			delete from table_count where count_id=#count_id# and userid=#userid#
+		]]>
+	</delete>
+
+	<!-- 描述：查询一个账户是否存在 作者： 吴极心 -->
+	<select id="existAccount" resultClass="java.lang.Integer"
+		parameterClass="java.util.Map">
+    <![CDATA[ 
+         select count(count_id) from table_count where count_name=#count_name# and userid=#userid#
+     ]]>
+	</select>
+
+	<!-- 描述：查询用户的所有账户信息，包括流入账户的金额总数，流出账户的金额总数和账单条目总数 作者： 吴极心 -->
+	<select id="getAllAccount" resultMap="accountinfoResult"
+		parameterClass="java.util.Map">
+    <![CDATA[ 
+        select  distinct 
+        table_count.userid,table_count.count_id as cid,count_name,count_cash,count_remark,
+        (select sum(cash) from table_main where count_id=cid and flag_id=1)as totalin, 
+        (select sum(cash) from table_main where count_id=cid and flag_id=0)as totalout,
+        (select count(id) from table_main where count_id=cid)as items  
+        from table_count,table_main where table_count.count_id=table_main.count_id or table_count.userid=#userid#
+     ]]>
+	</select>
+
+	
+
+	<!-- 描述：查询特定账户信息 作者： 吴极心 -->
+	<select id="getAccount" resultMap="accountinfoResult2"
+		parameterClass="java.util.Map">
+    <![CDATA[ 
+         select * from table_count where count_id=#count_id#
+     ]]>
+	</select>
+	
+	<!-- 描述：查询所有账户信息 作者： 吴极心 -->
+	<select id="searchAccounts" resultMap="accountinfoResult2"
+		parameterClass="java.util.Map">
+    <![CDATA[ 
+         select * from table_count where userid=#userid#
+     ]]>
+	</select>
+
+	<!-- 描述：修改账户信息 作者： 吴极心 -->
+	<update id="updateAcount" parameterClass="accountinfo">
+	<![CDATA[
+			update table_count set count_name=#count_name#,count_cash=#count_cash#,count_remark=#count_remark# where count_id=#count_id#
+		]]>
+	</update>
+</sqlMap>

@@ -1,0 +1,195 @@
+#shou_zhi {
+	width: 774px;
+	border: thin solid #000000;
+}
+
+
+#shou_zhi #rTit {
+	height: 59px;
+	width: 774px;
+	border: thin solid #000000;
+	text-align: center;
+}
+
+
+#shou_zhi #zhi_chu {
+	width: 774px;
+	border: thin solid #000000;
+}
+
+
+#shou_zhi #zhi_chu #top {
+	height: 30px;
+	width: 754px;
+	border: thin solid #000000;
+    background-color: #003300;
+    padding-left:20px;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	line-height: 30px;
+}
+
+
+#shou_zhi #zhi_chu #charOut {
+	width: 774px;
+	border: thin solid #000000;
+}
+
+
+#shou_zhi #zhi_chu #bottom {
+	width: 758px;
+	border: thin solid #000000;
+	line-height: 30px;
+	text-align: right;
+	color: #127968;
+	font-size: 16px;
+	font-weight: bold;
+	padding-right:15px;
+}
+
+
+#shou_zhi #shou_ru {
+
+	width: 774px;
+	border: thin solid #000000;
+}
+
+
+#shou_zhi #shou_ru #top {
+	height: 30px;
+	width: 754px;
+	border: thin solid #000000;
+	padding-left:20px;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	line-height: 30px;
+	background-color: #FF0000;
+}
+
+
+#shou_zhi #shou_ru #charIn {
+	
+	width: 774px;
+	border: thin solid #000000;
+}
+
+
+.tableList {
+width: 100%;
+}
+
+
+.tableList th.first span {
+display: block;
+height: 29px;
+line-height: 29px;
+background: url(../res/image/fcy_bg.gif) no-repeat 0 0;
+}
+
+
+.tableList th.first div {
+position: relative;
+line-height: 29px;
+}
+
+
+.tableList th.end {
+	border-right: none;
+	text-align: center;
+	line-height: 29px;
+}
+
+
+.tableList th {
+background: url(../res/image/fcy_bg.gif) repeat-x 0 -29px;
+height: 29px;
+text-align: center;
+color: #375756;
+vertical-align: middle;
+border-left: 1px solid #D1DBDA;
+border-right: 1px solid #B1BBBA;
+}
+
+
+table[Attributes Style] {
+border-spacing: 0px;
+border-top-width: 0px;
+border-right-width: 0px;
+border-bottom-width: 0px;
+border-left-width: 0px;
+}
+
+
+table {
+border-collapse: separate;
+border-spacing: 2px;
+border-color: gray;
+}
+
+
+tbody {
+display: table-row-group;
+vertical-align: middle;
+border-color: inherit;
+}
+
+
+body {
+font: 12px Tahoma,Helvetica,Arial,'宋体',sans-serif;
+}
+
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p, img {
+margin: 0;
+padding: 0;
+}
+
+
+.listDiv {
+margin-top: 1px;
+}
+
+.listDiv ul {
+height: 25px;
+border-bottom: 1px solid #DAE0DE;
+cursor: pointer;
+}
+
+
+.listDiv .li3 {
+width: 385px;
+background: #E4EAEA url(../res/image/li_bg.gif) no-repeat left top;
+text-align:center;
+}
+
+
+.listDiv li {
+float: left;
+height: 25px;
+line-height: 24px;
+list-style: none;
+text-align:center;
+}
+
+
+.listDiv .li1 {
+	width: 385px;
+	background-color: #E4EAEA;
+	text-align:center;
+}
+
+
+#shou_zhi #shou_ru #bottom {
+	height: 30px;
+	width: 758px;
+	border: thin solid #000000;
+	line-height: 30px;
+	text-align: right;
+	color: #891B1A;
+	font-size: 16px;
+	font-weight: bold;
+	padding-right:15px;
+}

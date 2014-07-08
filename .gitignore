@@ -1,0 +1,9 @@
+#这是注释
+#忽略所有以.bak结尾的file
+*.bak
+#但lib.bak除外
+!lib.bak
+#忽略build/目录下的所有file
+build/
+#忽略tmp目录下的所有file
+tmp/

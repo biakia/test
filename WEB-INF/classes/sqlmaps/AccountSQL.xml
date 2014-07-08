@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"   "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AccountSQL">
+	<typeAlias alias="money" type="com.manage.ssi.model.Money" />
+	<resultMap id="moneyinfoResult" class="money">
+		<result property="id" column="id" />
+		<result property="categoey_id" column="categoey_id" />
+		<result property="cash" column="cash" />
+		<result property="count_id" column="count_id" />
+		<result property="date" column="date" />
+		<result property="remark" column="remark" />
+		<result property="flag_id" column="flag_id" />
+		<result property="userid" column="userid" />
+		<result property="category_item" column="category_item" />
+		<result property="count_name" column="count_name" />
+	</resultMap>
+	
+	<resultMap id="moneyinfoResult1" class="money">
+		<result property="id" column="id" />
+		<result property="categoey_id" column="categoey_id" />
+		<result property="cash" column="cash" />
+		<result property="count_id" column="count_id" />
+		<result property="date" column="date" />
+		<result property="remark" column="remark" />
+		<result property="flag_id" column="flag_id" />
+		<result property="userid" column="userid" />
+	</resultMap>
+	
+	<resultMap id="moneyinfoResult2" class="money">
+		<result property="id" column="id" />
+		<result property="categoey_id" column="categoey_id" />
+		<result property="cash" column="cash" />
+		<result property="count_id" column="count_id" />
+		<result property="date" column="date" />
+		<result property="remark" column="remark" />
+		<result property="flag_id" column="flag_id" />
+		<result property="userid" column="userid" />
+		<result property="category_item" column="category_item" />
+	</resultMap>
+	
+	<resultMap id="countcash" class="money">
+		<result property="cash" column="cashes" />
+		<result property="count_name" column="count_name" />
+		<result property="count_id" column="cid" />
+	</resultMap>
+	
+	<resultMap id="catecash" class="money">
+		<result property="cash" column="cashes" />
+		<result property="categoey_id" column="ctid" />
+		<result property="category_item" column="category_item" />
+	</resultMap>
+	
+	
+	<!--  实现模糊查询，根据日期查询数据           2013-11-22  @author yuxiao-->
+	<select id="getAccounts" resultMap="moneyinfoResult" parameterClass="java.util.Map">
+    <![CDATA[ 
+        select * from table_main,table_category,table_count 
+        where table_main.categoey_id=table_category.category_id and table_main.count_id=table_count.count_id 
+        and table_main.userid=#userid# and date like '%$date$%' order by table_main.date
+     ]]>
+	</select>
+	
+	<!--  实现往数据库中添加数据      2013-10-25 @author yuxiao-->
+	<insert id="keepAccount" parameterClass="money">
+	<![CDATA[
+	insert into table_main(categoey_id,cash,count_id,date,remark,
+	flag_id,userid)
+	values(#categoey_id#,#cash#,#count_id#,#date#,#remark#
+	,#flag_id#,#userid#)
+	]]>
+	 
+	</insert>
+	
+	<!-- 实现数据的删除 @date 2013-11-29 @author yuxiao -->
+	<delete id="deleteAccount" parameterClass="java.lang.Integer">
+	      <![CDATA[
+	      delete from table_main where id=#id#
+	      ]]>
+	   </delete>
+	
+	<!-- 实现数据的跟新 @date 2013-11-29 @author yuxiao -->
+	<update id="saveAccount" parameterClass="money">
+    <![CDATA[ 
+         update table_main set categoey_id=#categoey_id#,cash=#cash#,date=#date#,remark=#remark#,count_id=#count_id# 
+         where id=#id#
+     ]]>
+	</update>
+	
+	<!--  实现模糊查询，根据日期查询数据           2013-11-22  @author yuxiao-->
+	<select id="getAccounts1" resultMap="moneyinfoResult1" parameterClass="java.util.Map">
+    <![CDATA[ 
+         select * from table_main where userid=#users_id#
+     ]]>
+	</select>
+	
+	<!--  查用户某个账户下的账单         2013-11-22  @author wujixin-->
+	<select id="getAccounts2" resultMap="moneyinfoResult2" parameterClass="java.util.Map">
+    <![CDATA[ 
+         select * from table_main,table_category 
+        where table_main.categoey_id=table_category.category_id and table_main.count_id=$accountid$ 
+        and table_main.userid=$userid$  limit $pageno$,$num$ 
+     ]]>
+	</select>
+	
+
+	<!--  根据账户id和用户id查询账户           2013-11-22  @author wujixin-->
+	<select id="getAccountCash" resultMap="countcash" parameterClass="java.util.Map">
+    <![CDATA[ 
+         select distinct table_main.count_id as cid,
+         (select sum(cash)  from table_main where count_id=cid) as cashes,
+         table_count.count_name 
+         from table_main,table_count where table_main.count_id=table_count.count_id and table_main.userid=#userid# and table_main.flag_id=#flagid#;
+     ]]>
+	</select>
+	
+	<!--  根据分类id和用户id查询一级分类的金额          2013-11-22  @author wujixin-->
+	<select id="getCategoryCash" resultMap="catecash" parameterClass="java.util.Map">
+    <![CDATA[ 
+         select distinct table_category.category_id as ctid,
+         (select sum(cash) from  table_main where table_main.categoey_id=ctid) as cashes, 
+         table_category.category_item from table_main,table_category 
+         where table_category.category_id=table_main.categoey_id and userid=#userid# and flag_id=#flagid#
+
+     ]]>
+	</select>
+	
+	<!--  根据账单ID和用户ID反查账户ID           2013-11-22  @author yuxiao-->
+	<select id="accountId" resultClass="int" parameterClass="java.util.Map">
+    <![CDATA[ 
+         select count_id from table_main where userid=#userid# and id=#itemid#
+     ]]>
+	</select>
+	
+	
+</sqlMap>
